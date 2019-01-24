@@ -47,15 +47,7 @@ class Student
   end
 
   def self.new_from_db(row)
-    sql = <<-SQL
-      SELECT * FROM students
-      WHERE id = ?
-    SQL
-
-    new_student = Student.new
-    new_student.id = DB[:conn].execute(sql, row)[0,0]
-    new_student.name = DB[:conn].execute(sql, row)[0,1]
-    new_student.grade = DB[:conn].execute(sql, row)[0,2]
+    new_student = Student.new(row[0], row[1], row[2])
     new_student
   end
 
