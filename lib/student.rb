@@ -56,7 +56,7 @@ class Student
     new_student.id = DB[:conn].execute(sql, row)[0,0]
     new_student.name = DB[:conn].execute(sql, row)[0,1]
     new_student.grade = DB[:conn].execute(sql, row)[0,2]
-
+    new_student
   end
 
 end
