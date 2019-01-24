@@ -55,11 +55,9 @@ class Student
     sql = <<-SQL
       SELECT * FROM students
       WHERE name = ?
-      LIMIT 1
     SQL
-
-    DB[:conn].execute(sql, name)
-
+    arr = DB[:conn].execute(sql, name)
+    Student.new(arr[0], arr[1], arr[2])
   end
 
 end
